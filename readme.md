@@ -7,7 +7,7 @@ A simple javascript plugin to reveal elements on scroll.
 ```html
 <!DOCTYPE html>
 <body style="min-height: 3000px; display: flex; flex-direction: column; gap: 30px;">
-  <!-- reveal is a required class on elements needs that be affected -->
+  <!-- reveal is a required class on elements that needs to be affected -->
   <div class="div reveal"></div>
   <div class="div reveal"></div>
   <div class="div reveal"></div>
