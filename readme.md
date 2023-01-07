@@ -1,6 +1,6 @@
 # SimpleTilt.js
 
-A simple javascript plugin to do reveal elements on scroll.
+A simple javascript plugin to reveal elements on scroll.
 
 ### Usage
 
