@@ -1,25 +1,19 @@
+# SimpleTilt.js
+
+A simple javascript plugin to do reveal elements on scroll.
+
+### Usage
+
+```html
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <style>
-    .div {
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 300px;
-    }
-  </style>
-</head>
-
 <body style="min-height: 3000px; display: flex; flex-direction: column; gap: 30px;">
+  <!-- reveal is a required class on elements needs that be affected -->
   <div class="div reveal"></div>
   <div class="div reveal"></div>
   <div class="div reveal"></div>
   <div class="div reveal"></div>
   <div class="div reveal"></div>
+  <!-- delay dataset is optional -->
   <div class="div reveal" data-delay="200"></div>
   <div class="div reveal" data-delay="400"></div>
   <div class="div reveal" data-delay="600"></div>
@@ -35,4 +29,4 @@
     });
   </script>
 </body>
-</html>
+```

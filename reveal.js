@@ -1,15 +1,15 @@
 class Reveal {
-  elements
-  disabled = false
-  windowHeight
+  #elements
+  #disabled = false
+  #windowHeight
   visibilityDistance = 120
   transitionTime = 0.4
   distanceToTransition = 50
   screenSizeToDisableAnimations = 768
 
   constructor(props) {
-    this.elements = document.querySelectorAll(".reveal")
-    this.windowHeight = window.innerHeight
+    this.#elements = document.querySelectorAll(".reveal")
+    this.#windowHeight = window.innerHeight
 
     this.#validateProps(props)
 
@@ -34,13 +34,13 @@ class Reveal {
 
   // Animates the elements if is the correct moment
   #animate() {
-    if (!this.disabled) {
-      for (let i = 0; i < this.elements.length; i++) {
-        const element = this.elements[i]
+    if (!this.#disabled) {
+      for (let i = 0; i < this.#elements.length; i++) {
+        const element = this.#elements[i]
   
         if (
           element.getBoundingClientRect().top <
-          this.windowHeight - this.visibilityDistance
+          this.#windowHeight - this.visibilityDistance
         ) {
           this.#reveal(element)
         } else {
@@ -104,11 +104,11 @@ class Reveal {
   // Used to verify if is needed to disabled animation
   #verifyWindowSize() {
     window.addEventListener('resize', () => {
-      this.windowHeight = window.innerHeight
+      this.#windowHeight = window.innerHeight
       if (window.innerWidth < (this.screenSizeToDisableAnimations + 1)) {
-        return this.disabled = true
+        return this.#disabled = true
       }
-      return this.disabled = false
+      return this.#disabled = false
     })
   }
 
