@@ -53,10 +53,6 @@ class Reveal {
     if (!this.#disabled) {
       for (let i = 0; i < this.#elementsOffsetTop.length; i++) {
         const offsetTop = this.#elementsOffsetTop[i]
-        console.log("offsetTop", offsetTop)
-        console.log("calc", (window.scrollY + (this.#windowHeight - this.visibilityDistance)))
-        console.log("validation", offsetTop < (window.scrollY + (this.#windowHeight - this.visibilityDistance)))
-        let validation = offsetTop < window.scrollY + (this.#windowHeight - this.visibilityDistance)
         if (validation) {
           this.#reveal(this.#elements[`${offsetTop}`])
         } else {
