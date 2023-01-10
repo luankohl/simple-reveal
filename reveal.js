@@ -1,5 +1,6 @@
 class Reveal {
-  #elements
+  #elements = {}
+  #elementsOffsetTop = []
   #disabled = false
   #windowHeight
   visibilityDistance = 120
@@ -8,12 +9,21 @@ class Reveal {
   screenSizeToDisableAnimations = 768
 
   constructor(props) {
-    this.#elements = document.querySelectorAll(".reveal")
-    this.#windowHeight = window.innerHeight
-
     this.#validateProps(props)
 
+    this.#windowHeight = window.innerHeight
+    this.#getElements()
     this.#run()
+  }
+
+  // Get all elements needs animation
+  #getElements() {
+    const els = document.querySelectorAll('.reveal');
+    for (let i = 0; i < els.length; i++) {
+      const item = els[i]
+      this.#elements[`${item.offsetTop}`] = item
+      this.#elementsOffsetTop.push(item.offsetTop)
+    }
   }
 
   // Fade In
@@ -35,16 +45,12 @@ class Reveal {
   // Animates the elements if is the correct moment
   #animate() {
     if (!this.#disabled) {
-      for (let i = 0; i < this.#elements.length; i++) {
-        const element = this.#elements[i]
-  
-        if (
-          element.getBoundingClientRect().top <
-          this.#windowHeight - this.visibilityDistance
-        ) {
-          this.#reveal(element)
+      for (let i = 0; i < this.#elementsOffsetTop.length; i++) {
+        const offsetTop = this.#elementsOffsetTop[i]
+        if (offsetTop < (window.scrollY + (this.#windowHeight - this.visibilityDistance))) {
+          this.#reveal(this.#elements[`${offsetTop}`])
         } else {
-          this.#unreveal(element)
+          this.#unreveal(this.#elements[`${offsetTop}`])
         }
       }
     }
