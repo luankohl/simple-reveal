@@ -53,6 +53,7 @@ class Reveal {
     if (!this.#disabled) {
       for (let i = 0; i < this.#elementsOffsetTop.length; i++) {
         const offsetTop = this.#elementsOffsetTop[i]
+        let validation = offsetTop < window.scrollY + (this.#windowHeight - this.visibilityDistance)
         if (validation) {
           this.#reveal(this.#elements[`${offsetTop}`])
         } else {
